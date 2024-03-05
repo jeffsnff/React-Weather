@@ -4,6 +4,8 @@ const APIKEY = import.meta.env.VITE_REACT_APP_API
 const CITY = 'Provo'
 const DAYS = '3'
 
+import Location from '../Location/Location.jsx';
+
 const Forecast = () => {
 
   const [location, setLocation] = useState([])
@@ -25,16 +27,18 @@ const Forecast = () => {
   
   console.log(currentWeather)
   console.log(forecast)
-  console.log(location)
 
   return(
     <div className='weatherDisplay' >
-      <h1>Forcast</h1>
+      <Location
+        name={location.name}
+        region={location.region}
+        country={location.country}
+        localtime={location.localtime}
+        timeZone={location.tz_id}
+      />
 
     </div>
-    
-    
-    
   )
 }
 

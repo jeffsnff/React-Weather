@@ -1,16 +1,12 @@
-
-
 import Header from './Components/Header/Header.jsx';
-import Forecast from './Components/Forecast/Forecast.jsx';
-
-
+import WeatherDisplay from './Components/WeatherDisplay/WeatherDisplay.jsx';
 
 function App() {
   
   return (
     <>
       <Header />
-      <Forecast />
+      <WeatherDisplay />
     </>
   );
 }
