@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
+const APIKEY = import.meta.env.VITE_REACT_APP_API
+
 function App() {
   const [localWeather, setLocalWeather ] = useState([]);
-  const APIKEY = '83bd5de0e78499f0f5c97cc0883851d8'
+  
   
   useEffect(() => {
     axios.get(`http://api.openweathermap.org/data/2.5/weather?q=provo,us&APPID=${APIKEY}`)
