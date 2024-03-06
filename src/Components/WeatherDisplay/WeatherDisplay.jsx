@@ -7,14 +7,16 @@ import CurrentWeather from '../CurrentWeather/CurrentWeather.jsx';
 
 const Forecast = () => {
 
+  const Fahrenheit = 'Fahrenheit';
+  const Celsius = 'Celsius';
   const [location, setLocation] = useState([])
   const [currentWeather, setCurrentWeather] = useState([])
   const [forecast, setForcast] = useState([])
   const [text, setText] = useState('')
   const [icon, setIcon] = useState('')
-  const [unit, setUnit] = useState('Fahrenheit')
-  const [buttonText, setButtonText] = useState('Celsius')
-  const [city, setCity] = useState('Provo')
+  const [unit, setUnit] = useState(Fahrenheit)
+  const [buttonText, setButtonText] = useState(Celsius)
+  const [city, setCity] = useState('bogota')
   const [days, setDays] = useState('1')
 
 
@@ -26,6 +28,9 @@ const Forecast = () => {
       setCurrentWeather(response.data.current)
       setText(response.data.current.condition.text)
       setIcon(response.data.current.condition.icon)
+      
+      console.log(response.data)
+      console.log('Fired')
     })
     .catch(error => {
       console.log(error)
@@ -35,7 +40,7 @@ const Forecast = () => {
   // console.log(forecast)
 
   const imperial = {
-    unit: 'Fahrenheit',
+    unit: Fahrenheit,
     feelslike: currentWeather.feelslike_f,
     gustSpeed: currentWeather.gust_mph,
     humidity: currentWeather.humidity,
@@ -51,7 +56,7 @@ const Forecast = () => {
   }
 
   const metric = {
-    unit: 'Celsius',
+    unit: Celsius,
     feelslike: currentWeather.feelslike_c,
     gustSpeed: currentWeather.gust_kph,
     humidity: currentWeather.humidity,
@@ -67,17 +72,17 @@ const Forecast = () => {
   }
 
   const handleWeatherUnit = () => {
-    if(unit === 'Fahrenheit'){
-      setUnit('Celsius')
-      setButtonText('Fahrenheit')
-    }else if(unit === 'Celsius'){
-      setUnit('Fahrenheit')
-      setButtonText('Celsius')
+    if(unit === Fahrenheit){
+      setUnit(Celsius)
+      setButtonText(Fahrenheit)
+    }else if(unit === Celsius){
+      setUnit(Fahrenheit)
+      setButtonText(Celsius)
     }
   }
 
   let displayWeather;
-  if(unit === 'F'){
+  if(unit === Fahrenheit){
     displayWeather = <CurrentWeather 
       currentWeather={imperial}
       weatherUnit={unit}
