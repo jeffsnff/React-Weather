@@ -12,7 +12,8 @@ const Forecast = () => {
   const [forecast, setForcast] = useState([])
   const [text, setText] = useState('')
   const [icon, setIcon] = useState('')
-  const [unit, setUnit] = useState('F')
+  const [unit, setUnit] = useState('Fahrenheit')
+  const [buttonText, setButtonText] = useState('Celsius')
   const [city, setCity] = useState('Provo')
   const [days, setDays] = useState('1')
 
@@ -66,12 +67,13 @@ const Forecast = () => {
   }
 
   const handleWeatherUnit = () => {
-    if(unit === 'F'){
-      setUnit('C')
-    }else if(unit === 'C'){
-      setUnit('F')
+    if(unit === 'Fahrenheit'){
+      setUnit('Celsius')
+      setButtonText('Fahrenheit')
+    }else if(unit === 'Celsius'){
+      setUnit('Fahrenheit')
+      setButtonText('Celsius')
     }
-
   }
 
   let displayWeather;
@@ -97,9 +99,9 @@ const Forecast = () => {
         timeZone={location.tz_id}
       />
       {displayWeather}
-      <button onClick={() => handleWeatherUnit()}>Change Measurement Unit</button>
+      <button onClick={() => handleWeatherUnit()}>Change to {buttonText}</button>
     </div>
   )
 }
 
-export default Forecast
+export default Forecast;
