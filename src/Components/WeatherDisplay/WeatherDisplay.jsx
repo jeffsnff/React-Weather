@@ -4,8 +4,9 @@ const APIKEY = import.meta.env.VITE_REACT_APP_API;
 
 import Location from '../Location/Location.jsx';
 import CurrentWeather from '../CurrentWeather/CurrentWeather.jsx';
+import Forecast from '../Forecast/Forecast.jsx';
 
-const Forecast = () => {
+const WeatherDisplay = () => {
 
   const Fahrenheit = 'Fahrenheit';
   const Celsius = 'Celsius';
@@ -16,7 +17,7 @@ const Forecast = () => {
   const [icon, setIcon] = useState('')
   const [unit, setUnit] = useState(Fahrenheit)
   const [buttonText, setButtonText] = useState(Celsius)
-  const [city, setCity] = useState('bogota')
+  const [city, setCity] = useState('provo')
   const [days, setDays] = useState('1')
 
 
@@ -28,16 +29,13 @@ const Forecast = () => {
       setCurrentWeather(response.data.current)
       setText(response.data.current.condition.text)
       setIcon(response.data.current.condition.icon)
-      
-      console.log(response.data)
+
       console.log('Fired')
     })
     .catch(error => {
       console.log(error)
     })
   },[])
-  
-  // console.log(forecast)
 
   const imperial = {
     unit: Fahrenheit,
@@ -104,9 +102,10 @@ const Forecast = () => {
         timeZone={location.tz_id}
       />
       {displayWeather}
+      <Forecast forecastArray={forecast} />
       <button onClick={() => handleWeatherUnit()}>Change to {buttonText}</button>
     </div>
   )
 }
 
-export default Forecast;
+export default WeatherDisplay;
