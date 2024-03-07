@@ -1,9 +1,6 @@
 const CurrentWeather = ({weatherUnit, currentWeather}) => {
 
-    console.log(currentWeather)
-  
   return(
-
     <>
       <h3>{weatherUnit}</h3>
       <p><img src={currentWeather.icon} /> {currentWeather.text}</p>   
