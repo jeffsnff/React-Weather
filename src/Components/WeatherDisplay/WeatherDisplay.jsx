@@ -18,24 +18,27 @@ const WeatherDisplay = () => {
   const [unit, setUnit] = useState(Fahrenheit)
   const [buttonText, setButtonText] = useState(Celsius)
   const [city, setCity] = useState('provo')
-  const [days, setDays] = useState('1')
+  const [days, setDays] = useState('3')
 
-
-  useEffect(() => {
-    axios.get(`https://api.weatherapi.com/v1/forecast.json?key=${APIKEY}&q=${city}&days=${days}&aqi=no&alerts=no`)
-    .then(response => {
-      setLocation(response.data.location)
-      setForcast(response.data.forecast)
-      setCurrentWeather(response.data.current)
-      setText(response.data.current.condition.text)
-      setIcon(response.data.current.condition.icon)
-
-      console.log('Fired')
-    })
-    .catch(error => {
-      console.log(error)
-    })
+   useEffect(() => {
+      getWeather();
   },[])
+
+  function getWeather(){
+    axios.get(`https://api.weatherapi.com/v1/forecast.json?key=${APIKEY}&q=${city}&days=${days}&aqi=no&alerts=no`)
+      .then(response => {
+        setLocation(response.data.location)
+        setForcast(response.data.forecast.forecastday)
+        setCurrentWeather(response.data.current)
+        setText(response.data.current.condition.text)
+        setIcon(response.data.current.condition.icon)
+  
+        console.log('Fired')
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
 
   const imperial = {
     unit: Fahrenheit,
@@ -104,6 +107,7 @@ const WeatherDisplay = () => {
       {displayWeather}
       <Forecast forecastArray={forecast} />
       <button onClick={() => handleWeatherUnit()}>Change to {buttonText}</button>
+      <button onClick={() => getWeather()}>Refresh Weather</button>
     </div>
   )
 }
