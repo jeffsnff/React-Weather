@@ -17,7 +17,7 @@ const WeatherDisplay = () => {
   const [icon, setIcon] = useState('')
   const [unit, setUnit] = useState(Fahrenheit)
   const [buttonText, setButtonText] = useState(Celsius)
-  const [city, setCity] = useState('provo')
+  const [city, setCity] = useState('bogota')
   const [days, setDays] = useState('3')
 
    useEffect(() => {
@@ -103,6 +103,7 @@ const WeatherDisplay = () => {
         country={location.country}
         localtime={location.localtime}
         timeZone={location.tz_id}
+        currentWeatherIcon={icon}
       />
       {displayWeather}
       <Forecast forecastArray={forecast} />

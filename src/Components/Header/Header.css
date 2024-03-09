@@ -3,8 +3,4 @@
   width: 100%;
   display: flex;
   justify-content: space-around;
-  border: 1px solid red;
-}
-.header {
-  border: 1px solid green;
 }
