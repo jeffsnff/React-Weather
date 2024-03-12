@@ -32,8 +32,6 @@ const WeatherDisplay = () => {
         setCurrentWeather(response.data.current)
         setText(response.data.current.condition.text)
         setIcon(response.data.current.condition.icon)
-  
-        console.log('Fired')
       })
       .catch(error => {
         console.log(error)
@@ -105,8 +103,11 @@ const WeatherDisplay = () => {
         timeZone={location.tz_id}
         currentWeatherIcon={icon}
       />
+
       {displayWeather}
+
       <Forecast forecastArray={forecast} displayUnit={unit} />
+
       <button onClick={() => handleWeatherUnit()}>Change to {buttonText}</button>
       <button onClick={() => getWeather()}>Refresh Weather</button>
     </div>
