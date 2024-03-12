@@ -17,7 +17,7 @@ const WeatherDisplay = () => {
   const [icon, setIcon] = useState('')
   const [unit, setUnit] = useState(Fahrenheit)
   const [buttonText, setButtonText] = useState(Celsius)
-  const [city, setCity] = useState('bogota')
+  const [city, setCity] = useState(`bucaramanga`)
   const [days, setDays] = useState('3')
 
    useEffect(() => {
@@ -106,7 +106,7 @@ const WeatherDisplay = () => {
         currentWeatherIcon={icon}
       />
       {displayWeather}
-      <Forecast forecastArray={forecast} />
+      <Forecast forecastArray={forecast} displayUnit={unit} />
       <button onClick={() => handleWeatherUnit()}>Change to {buttonText}</button>
       <button onClick={() => getWeather()}>Refresh Weather</button>
     </div>

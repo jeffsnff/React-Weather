@@ -1,12 +1,18 @@
+import ForecastDisplay from "../ForecastDisplay/ForecastDisplay.jsx"
 
-const Forecast = ({forecastArray}) => {
-  console.log(forecastArray)
+const Forecast = ({forecastArray, displayUnit}) => {
+
+  
 
   const displayForecast = forecastArray.map((day) => {
-    console.log(day)
+    return(
+      <ForecastDisplay key={day.date_epoch} forecastDay={day} displayUnit={displayUnit} />
+    )
   })
   return(
-    <h1>Forecast Page</h1>
+    <div>
+      {displayForecast}
+    </div>
   );
 }
 
