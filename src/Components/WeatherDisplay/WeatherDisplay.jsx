@@ -5,6 +5,7 @@ const APIKEY = import.meta.env.VITE_REACT_APP_API;
 import Location from '../Location/Location.jsx';
 import CurrentWeather from '../CurrentWeather/CurrentWeather.jsx';
 import Forecast from '../Forecast/Forecast.jsx';
+import './WeatherDisplay.css';
 
 const WeatherDisplay = () => {
 
@@ -94,7 +95,7 @@ const WeatherDisplay = () => {
   }
 
   return(
-    <div className='weatherDisplay' >
+    <div>
       <Location
         name={location.name}
         region={location.region}
@@ -103,13 +104,18 @@ const WeatherDisplay = () => {
         timeZone={location.tz_id}
         currentWeatherIcon={icon}
       />
-
-      {displayWeather}
-
-      <Forecast forecastArray={forecast} displayUnit={unit} />
-
-      <button onClick={() => handleWeatherUnit()}>Change to {buttonText}</button>
-      <button onClick={() => getWeather()}>Refresh Weather</button>
+      <div className='displayWeather-div'>
+        {displayWeather}
+      </div>
+      <div className='displayForecast-div'>
+        <Forecast forecastArray={forecast} displayUnit={unit} />
+      </div>
+      
+      <div className='button-div' >
+        <button onClick={() => handleWeatherUnit()}>Change to {buttonText}</button>
+        <button onClick={() => getWeather()}>Refresh Weather</button>
+      </div>
+      
     </div>
   )
 }

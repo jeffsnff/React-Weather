@@ -1,0 +1,9 @@
+.button-div {
+  display: flex;
+  justify-content: center;
+}
+.displayForecast-div {
+  padding-left: 10%;
+  padding-right: 10%;
+  margin-bottom: 10px;
+}

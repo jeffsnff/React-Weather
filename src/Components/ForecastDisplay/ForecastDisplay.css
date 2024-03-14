@@ -1,0 +1,9 @@
+.forecastDisplay-div{
+  border: 1px solid black;
+  border-radius: 5%;
+  padding: 10px;
+}
+
+.forecastDisplay-div > h3 {
+  text-align: center;
+}
