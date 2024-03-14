@@ -94,6 +94,13 @@ const WeatherDisplay = () => {
     />
   }
 
+  const handleWeatherClick = () => {
+    getWeather();
+  }
+  const handleSearchChange = (event) => {
+    setCity(event.target.value)
+  }
+
   return(
     <div>
       <Location
@@ -103,6 +110,8 @@ const WeatherDisplay = () => {
         localtime={location.localtime}
         timeZone={location.tz_id}
         currentWeatherIcon={icon}
+        handleSearchChange={handleSearchChange}
+        getWeather={handleWeatherClick}
       />
       <div className='displayWeather-div'>
         {displayWeather}
