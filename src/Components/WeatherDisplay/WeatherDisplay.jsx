@@ -18,14 +18,14 @@ const WeatherDisplay = () => {
   const [icon, setIcon] = useState('')
   const [unit, setUnit] = useState(Fahrenheit)
   const [buttonText, setButtonText] = useState(Celsius)
-  const [city, setCity] = useState(`bucaramanga`)
+  const [city, setCity] = useState('')
   const [days, setDays] = useState('3')
 
    useEffect(() => {
       getWeather();
   },[])
 
-  function getWeather(){
+  function getWeather(city = 'provo'){
     axios.get(`https://api.weatherapi.com/v1/forecast.json?key=${APIKEY}&q=${city}&days=${days}&aqi=no&alerts=no`)
       .then(response => {
         setLocation(response.data.location)
@@ -95,7 +95,8 @@ const WeatherDisplay = () => {
   }
 
   const handleWeatherClick = () => {
-    getWeather();
+    getWeather(city);
+    setCity('');
   }
   const handleSearchChange = (event) => {
     setCity(event.target.value)
@@ -112,6 +113,7 @@ const WeatherDisplay = () => {
         currentWeatherIcon={icon}
         handleSearchChange={handleSearchChange}
         getWeather={handleWeatherClick}
+        city={city}
       />
       <div className='displayWeather-div'>
         {displayWeather}

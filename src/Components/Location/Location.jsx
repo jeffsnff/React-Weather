@@ -1,6 +1,6 @@
 import './Location.css'
 
-const Location = ({name, country, localtime, region, timeZone, currentWeatherIcon, handleSearchChange, getWeather}) => {
+const Location = ({name, country, localtime, region, timeZone, currentWeatherIcon, handleSearchChange, getWeather, city}) => {
   return(
     <div className='location-div'>
       <div>
@@ -10,7 +10,12 @@ const Location = ({name, country, localtime, region, timeZone, currentWeatherIco
       </div>
       <p>{country}</p>
       <p>Current Time : {localtime} {timeZone}</p>
-      <input onChange={handleSearchChange} type='text' placeholder='City Name'/>
+      <input
+        value={city}
+        onChange={handleSearchChange}
+        // type='text'
+        placeholder='City Name'
+      />
       <button onClick={() => getWeather()} >Search</button>
       </div>
     </div>
